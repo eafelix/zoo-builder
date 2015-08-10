@@ -10,11 +10,10 @@ Animal.prototype.sayOwnSpecies = function() {
 };
 
 Animal.prototype.talk = function(verse) {
-    var that = this;
     resVerse = this.name + " says: ";
     verse.split(" ").forEach(function (value, index) {
         resVerse += value + " " + that.sound + " ";
-    });
+    }, this);
     return resVerse;
 };
 

@@ -1,21 +1,22 @@
 var argv = require("minimist")(process.argv.slice(2)),
-    Animal = require("./Animal"),
+    Animal = require("./animal"),
     newZooAnimal = {};
 
-var onError = function(msg) {
+function onError(msg) {
     console.log("ERROR: " + msg);
     process.exit(1);
-};
-var onInfo = function(obj) {
+}
+
+function onInfo(obj) {
     if (typeof obj !== "object") {
         console.log("INFO: " + obj);
     } else {
         console.log("INFO: ");
         console.dir(obj);
     }
-};
+}
 
-var validateParams = function(argv) {
+function validateParams(argv){
     if (!(argv.hasOwnProperty("n") && argv.n)) {
         onError('please provide the animal name');
     } else if (!(argv.hasOwnProperty("k") && argv.k)) {
@@ -25,19 +26,16 @@ var validateParams = function(argv) {
     } else if (!(argv.hasOwnProperty("m") && argv.m)) {
         onError('please provide the message');
     }
-};
+}
 
-//validate obj with params
 validateParams(argv);
 
-//create obj from params
 newZooAnimal = {
     name: argv.n,
     kind: argv.k,
     sound: argv.s
 };
 
-//create obj
 var speciesResult = new Animal(newZooAnimal);
 
 console.log(speciesResult.sayOwnSpecies());
