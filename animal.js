@@ -12,7 +12,7 @@ Animal.prototype.sayOwnSpecies = function() {
 Animal.prototype.talk = function(verse) {
     resVerse = this.name + " says: ";
     verse.split(" ").forEach(function (value, index) {
-        resVerse += value + " " + that.sound + " ";
+        resVerse += value + " " + this.sound + " ";
     }, this);
     return resVerse;
 };
